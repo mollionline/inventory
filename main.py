@@ -51,3 +51,13 @@ def create(product: dict):
         return product.save()
     except ValidationError as e:
         raise HTTPException(status_code=422, detail=e.errors())
+
+
+@app.get('/products/{pk}')
+def get(pk: str):
+    return Product.get(pk)
+
+
+@app.delete('/products/{pk}')
+def delete(pk: str):
+    return Product.delete(pk)
